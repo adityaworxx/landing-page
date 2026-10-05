@@ -1,0 +1,6 @@
+{
+  "name": "SynapseX",
+  "description": "SynapseX — An institutional financial data management and real-time ledger intelligence platform.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
