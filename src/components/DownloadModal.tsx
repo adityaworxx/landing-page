@@ -16,12 +16,12 @@ export const DownloadModal: React.FC<DownloadModalProps> = ({ isOpen, onClose })
     setTimeout(() => {
       // Create mock file download trigger
       const blob = new Blob([
-        `SynapseX Financial Terminal Client v1.0.4\nRelease: 2026-Q3 Universal macOS\nProtocol: Real-Time Ledger & Treasury Synchronization\nStatus: Verified\nTarget: Institutional Multi-Asset Execution`
+        `SynapseX Financial Terminal Client v1.0.4\nRelease: 2026-Q3 Universal Edition\nProtocol: Real-Time Ledger & Treasury Synchronization\nStatus: Verified\nTarget: Institutional Multi-Asset Execution`
       ], { type: 'text/plain;charset=utf-8' });
       const url = URL.createObjectURL(blob);
       const a = document.createElement('a');
       a.href = url;
-      a.download = 'SynapseX-Terminal-v1.0.4.dmg';
+      a.download = 'SynapseX-Terminal-v1.0.4-universal.pkg';
       document.body.appendChild(a);
       a.click();
       document.body.removeChild(a);
@@ -48,60 +48,62 @@ export const DownloadModal: React.FC<DownloadModalProps> = ({ isOpen, onClose })
           />
 
           <motion.div
-            initial={{ opacity: 0, scale: 0.95, y: 20 }}
+            initial={{ opacity: 0, scale: 0.96, y: 15 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.95, y: 20 }}
-            transition={{ type: 'spring', damping: 25, stiffness: 350 }}
-            className="relative w-full max-w-lg bg-[#0c0c0e] border border-white/15 rounded-2xl p-6 sm:p-8 shadow-2xl text-white overflow-hidden"
+            exit={{ opacity: 0, scale: 0.96, y: 15 }}
+            transition={{ type: 'spring', damping: 28, stiffness: 380 }}
+            className="relative w-full max-w-lg bg-[#0a0a0d] border border-white/15 rounded-2xl p-6 sm:p-7 shadow-2xl text-white overflow-hidden"
           >
+            {/* Top hairline sheen */}
+            <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
             {/* Ambient subtle glow */}
-            <div className="absolute -top-24 -left-24 w-60 h-60 bg-white/[0.04] rounded-full blur-3xl pointer-events-none" />
+            <div className="absolute -top-24 -left-24 w-60 h-60 bg-white/[0.03] rounded-full blur-3xl pointer-events-none" />
 
             <div className="flex items-center justify-between mb-6">
               <div className="flex items-center gap-3">
                 <div className="w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center">
-                  <SynapseXLogo size={18} />
+                  <SynapseXLogo size={16} />
                 </div>
                 <div>
                   <h3 className="text-base font-medium tracking-tight">SynapseX Treasury Terminal</h3>
-                  <p className="text-xs text-white/40">Release v1.0.4 · macOS Universal</p>
+                  <p className="text-[11px] text-white/40 font-mono">Release v1.0.4 · Cross-Platform Universal</p>
                 </div>
               </div>
               <button
                 onClick={onClose}
-                className="w-8 h-8 rounded-full bg-white/5 hover:bg-white/15 flex items-center justify-center text-white/60 hover:text-white transition-colors"
+                className="w-7 h-7 rounded-full bg-white/5 hover:bg-white/15 flex items-center justify-center text-white/50 hover:text-white transition-colors cursor-pointer text-xs"
                 aria-label="Close dialog"
               >
                 ✕
               </button>
             </div>
 
-            <div className="space-y-4 mb-6 text-xs sm:text-sm text-white/60">
-              <p className="leading-relaxed">
+            <div className="space-y-4 mb-6 text-xs sm:text-sm text-white/65">
+              <p className="leading-relaxed font-light">
                 Experience low-latency financial telemetry with direct multi-custody settlement, 2.4ms target reconciliation, and real-time portfolio forecasting.
               </p>
 
-              <div className="border border-white/10 rounded-xl p-4 bg-white/[0.02] space-y-2">
+              <div className="border border-white/[0.08] rounded-xl p-3.5 bg-white/[0.015] space-y-2 font-mono">
                 <div className="flex justify-between items-center text-xs">
                   <span className="text-white/40">Architecture</span>
-                  <span className="text-white/80 font-mono">Apple Silicon (M1-M4) &amp; Intel</span>
+                  <span className="text-white/80">Universal 64-bit (x86_64 &amp; ARM64)</span>
                 </div>
                 <div className="flex justify-between items-center text-xs">
                   <span className="text-white/40">Package Size</span>
-                  <span className="text-white/80 font-mono">84.2 MB</span>
+                  <span className="text-white/80">84.2 MB</span>
                 </div>
                 <div className="flex justify-between items-center text-xs">
                   <span className="text-white/40">SHA-256</span>
-                  <span className="text-white/80 font-mono">f84e...92a1</span>
+                  <span className="text-white/80">f84e...92a1</span>
                 </div>
               </div>
             </div>
 
-            <div className="flex flex-col sm:flex-row gap-3">
+            <div className="flex flex-col sm:flex-row gap-2.5">
               <button
                 onClick={handleStartDownload}
                 disabled={downloading}
-                className="flex-1 h-12 bg-white text-black font-medium text-xs sm:text-sm rounded-xl flex items-center justify-center gap-2 hover:bg-neutral-200 transition-colors disabled:opacity-75"
+                className="flex-1 h-11 bg-white text-black font-medium text-xs sm:text-sm rounded-xl flex items-center justify-center gap-2 hover:bg-neutral-200 transition-colors disabled:opacity-75 cursor-pointer"
               >
                 {downloading ? (
                   <>
@@ -114,8 +116,20 @@ export const DownloadModal: React.FC<DownloadModalProps> = ({ isOpen, onClose })
                   </>
                 ) : (
                   <>
-                    <i className="bi bi-apple text-base"></i>
-                    <span>Download for macOS</span>
+                    <svg
+                      className="w-4 h-4 text-black shrink-0"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                      strokeWidth={2}
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
+                      />
+                    </svg>
+                    <span>Download Terminal Binary</span>
                   </>
                 )}
               </button>

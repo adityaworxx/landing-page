@@ -39,19 +39,19 @@ export const TechnologySection: React.FC = () => {
         className="absolute inset-0 w-full h-full object-cover pointer-events-none"
       />
 
-      {/* Dark overlay for contrast */}
-      <div className="absolute inset-0 bg-black/55 pointer-events-none" />
+      {/* Light, balanced overlay for contrast */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black/45 via-black/30 to-black/60 pointer-events-none" />
 
       {/* Foreground Content */}
-      <div className="relative z-10 w-full h-full flex flex-col justify-between px-8 sm:px-12 md:px-16 py-12 sm:py-16 select-none">
+      <div className="relative z-10 w-full h-full flex flex-col justify-between px-6 sm:px-12 md:px-16 py-12 sm:py-16 select-none">
         {/* Top Area */}
         <div className="flex flex-col md:flex-row md:justify-between md:items-start gap-6">
           {/* Left Heading */}
           <motion.h2
-            initial={{ opacity: 0, y: 40 }}
+            initial={{ opacity: 0, y: 35 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 1.0, ease: [0.215, 0.61, 0.355, 1] }}
+            transition={{ duration: 1.0, ease: [0.16, 1, 0.3, 1] }}
             className="text-white font-light text-[clamp(36px,8vw,72px)] leading-[0.95] tracking-[-0.03em]"
           >
             Financial
@@ -64,8 +64,8 @@ export const TechnologySection: React.FC = () => {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 1.0, delay: 0.2, ease: [0.215, 0.61, 0.355, 1] }}
-            className="text-white/50 text-[13px] sm:text-[15px] leading-relaxed max-w-xs md:text-right md:pt-2"
+            transition={{ duration: 1.0, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+            className="text-white/60 font-light text-[13px] sm:text-[14px] leading-relaxed max-w-xs md:text-right md:pt-2"
           >
             The system synchronizes multi-entity ledgers in sub-millisecond cycles. From there, every
             balance fluctuation is audited, verified, and settled in real time.
@@ -81,7 +81,7 @@ export const TechnologySection: React.FC = () => {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 1.0, delay: 0.3 }}
-          className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-6"
+          className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 sm:gap-5"
         >
           {TECH_ITEMS.map((item, index) => (
             <motion.div
@@ -90,16 +90,16 @@ export const TechnologySection: React.FC = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.2 }}
               transition={{
-                duration: 0.7,
+                duration: 0.8,
                 delay: index * 0.1,
-                ease: [0.215, 0.61, 0.355, 1],
+                ease: [0.16, 1, 0.3, 1],
               }}
-              className="flex flex-col"
+              className="p-5 rounded-xl border border-white/[0.08] bg-white/[0.015] backdrop-blur-sm hover:border-white/20 hover:bg-white/[0.03] transition-all duration-300 flex flex-col justify-between"
             >
-              <h3 className="text-white text-[14px] sm:text-[16px] font-normal mb-2">
+              <h3 className="text-white/90 text-[14px] sm:text-[15px] font-normal mb-2 tracking-tight">
                 {item.title}
               </h3>
-              <p className="text-white/40 text-[12px] sm:text-[14px] leading-relaxed">
+              <p className="text-white/45 text-[12px] sm:text-[13px] font-light leading-relaxed">
                 {item.desc}
               </p>
             </motion.div>

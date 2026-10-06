@@ -6,7 +6,7 @@ const FOOTER_VIDEO_URL =
 
 export const FooterSection: React.FC = () => {
   return (
-    <footer className="w-full bg-black overflow-hidden border-t border-white/5">
+    <footer className="w-full bg-black overflow-hidden border-t border-white/[0.08]">
       <div className="flex flex-col md:flex-row min-h-[400px] w-full">
         {/* Left Column: Video #5 */}
         <div className="w-full md:w-1/2 h-[300px] md:h-auto min-h-[300px] md:min-h-[400px] relative overflow-hidden">
@@ -18,29 +18,29 @@ export const FooterSection: React.FC = () => {
             playsInline
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-black/20 pointer-events-none" />
+          <div className="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-r from-transparent to-black pointer-events-none" />
         </div>
 
         {/* Right Column: Information & Copyright */}
-        <div className="w-full md:w-1/2 p-10 sm:p-16 flex flex-col justify-between bg-black">
+        <div className="w-full md:w-1/2 p-8 sm:p-14 md:p-16 flex flex-col justify-between bg-black">
           <div>
             {/* Logo + Name */}
             <div className="flex items-center gap-2.5 mb-8">
-              <SynapseXLogo size={18} className="text-white/70" />
-              <span className="text-[15px] font-medium text-white/70 tracking-tight">
+              <SynapseXLogo size={18} className="text-white/80" />
+              <span className="text-[15px] font-medium text-white/80 tracking-tight">
                 SynapseX
               </span>
             </div>
 
             {/* Description */}
-            <p className="text-white/40 text-[14px] sm:text-[15px] leading-relaxed max-w-sm">
+            <p className="text-white/45 text-[14px] sm:text-[15px] font-light leading-relaxed max-w-sm">
               The next evolution of institutional balance sheet infrastructure. Engineered for
               global treasury teams and multi-asset capital operators.
             </p>
           </div>
 
           {/* Copyright */}
-          <div className="text-white/25 text-[12px] mt-12 font-mono">
+          <div className="text-white/30 text-[11px] sm:text-[12px] mt-12 font-mono">
             © 2026 SynapseX Labs. All rights reserved.
           </div>
         </div>

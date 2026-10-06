@@ -38,14 +38,14 @@ export const CinematicSection: React.FC = () => {
         className="absolute inset-0 w-full h-full object-cover pointer-events-none"
       />
 
-      {/* Dark overlay for readability */}
-      <div className="absolute inset-0 bg-black/40 pointer-events-none" />
+      {/* Clean overlay for readability */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/30 to-black/50 pointer-events-none" />
 
       {/* Top Gradient Overlay: 180px height, linear-gradient from #010103 to transparent */}
       <div
         className="absolute top-0 inset-x-0 h-[180px] pointer-events-none z-10"
         style={{
-          background: 'linear-gradient(to bottom, #010103 0%, rgba(1, 1, 3, 0) 100%)',
+          background: 'linear-gradient(to bottom, #000 0%, rgba(0, 0, 0, 0) 100%)',
         }}
       />
 
@@ -60,7 +60,7 @@ export const CinematicSection: React.FC = () => {
             opacity,
             transformStyle: 'preserve-3d',
           }}
-          className="font-sans font-normal text-[22px] sm:text-[30px] md:text-[36px] lg:text-[42px] text-white leading-[1.35] tracking-[-0.02em] select-none text-center drop-shadow-md"
+          className="font-sans font-light text-[22px] sm:text-[28px] md:text-[34px] lg:text-[40px] text-white/95 leading-[1.4] tracking-[-0.02em] select-none text-center drop-shadow-sm"
         >
           A financial data architecture built for real-time institutional scale. SynapseX
           translates high-frequency market order flow into deterministic computational

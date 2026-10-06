@@ -35,8 +35,8 @@ export const MetricsSection: React.FC = () => {
         className="absolute inset-0 w-full h-full object-cover pointer-events-none"
       />
 
-      {/* Dark overlay */}
-      <div className="absolute inset-0 bg-black/60 pointer-events-none" />
+      {/* Light, luminous overlay */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/30 to-black/60 pointer-events-none" />
 
       {/* Main Content */}
       <div className="relative z-10 w-full max-w-6xl mx-auto pt-32 pb-32 px-6 flex flex-col items-center">
@@ -45,8 +45,8 @@ export const MetricsSection: React.FC = () => {
           initial={{ opacity: 0, y: 15 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 1.2 }}
-          className="text-white/40 text-[13px] sm:text-[14px] tracking-[0.2em] uppercase mb-20 text-center select-none"
+          transition={{ duration: 1.0, ease: [0.16, 1, 0.3, 1] }}
+          className="text-white/40 text-[12px] sm:text-[13px] tracking-[0.25em] uppercase mb-20 text-center select-none font-mono"
         >
           Performance Metrics
         </motion.p>
@@ -56,20 +56,21 @@ export const MetricsSection: React.FC = () => {
           {METRICS_DATA.map((item, index) => (
             <motion.div
               key={item.label}
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 25 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.3 }}
+              whileHover={{ y: -3 }}
               transition={{
                 duration: 0.8,
-                delay: index * 0.15,
-                ease: [0.215, 0.61, 0.355, 1],
+                delay: index * 0.12,
+                ease: [0.16, 1, 0.3, 1],
               }}
-              className="flex flex-col items-center"
+              className="flex flex-col items-center cursor-default select-none group"
             >
-              <span className="text-white text-[clamp(48px,10vw,96px)] font-light tracking-[-0.04em] leading-none tabular-nums select-none">
+              <span className="text-white text-[clamp(50px,10vw,96px)] font-extralight tracking-[-0.04em] leading-none tabular-nums group-hover:text-white transition-colors">
                 {item.value}
               </span>
-              <span className="text-white/40 text-[13px] sm:text-[15px] mt-4 tracking-wide select-none">
+              <span className="text-white/40 group-hover:text-white/60 text-[12px] sm:text-[13px] mt-4 tracking-[0.18em] uppercase font-mono transition-colors">
                 {item.label}
               </span>
             </motion.div>

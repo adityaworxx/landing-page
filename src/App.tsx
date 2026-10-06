@@ -4,6 +4,7 @@
  */
 
 import React, { useState, useEffect } from 'react';
+import Lenis from 'lenis';
 import Navbar from './components/Navbar';
 import HeroSection from './components/HeroSection';
 import CinematicSection from './components/CinematicSection';
@@ -18,12 +19,34 @@ export default function App() {
   const [isDownloadModalOpen, setIsDownloadModalOpen] = useState(false);
 
   useEffect(() => {
+    // Initialize buttery Lenis smooth scroll
+    const lenis = new Lenis({
+      duration: 1.1,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      orientation: 'vertical',
+      smoothWheel: true,
+      touchMultiplier: 1.5,
+    });
+
+    let animationFrameId: number;
+
+    function raf(time: number) {
+      lenis.raf(time);
+      animationFrameId = requestAnimationFrame(raf);
+    }
+
+    animationFrameId = requestAnimationFrame(raf);
+
     // After 800ms delay, entranceComplete becomes true
     const timer = setTimeout(() => {
       setEntranceComplete(true);
     }, 800);
 
-    return () => clearTimeout(timer);
+    return () => {
+      cancelAnimationFrame(animationFrameId);
+      lenis.destroy();
+      clearTimeout(timer);
+    };
   }, []);
 
   return (
